@@ -1,7 +1,18 @@
-from ultralytics import YOLO
+from utils import read, write
+from trackers import Tracker
 
-model = YOLO("yolov8m.pt")
+def main():
+    # Read the video
+    cap_frames = read("assets/match.mp4")
 
-result = model.predict('./assets/match.mp4', save=True)
+    tracker = Tracker('models/best.pt')
+    tracks = tracker.get_object_tracks(cap_frames, read_from_stub=True,
+                                        stub_path='./stubs/track_stubs.pkl')
 
-print(result)
+    output_video_frames = tracker.draw_annotations(cap_frames,tracks)
+
+    # Save the video
+    write(output_video_frames, 'output_videos/out.avi')
+
+if __name__ == '__main__':
+    main()
