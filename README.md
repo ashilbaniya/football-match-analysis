@@ -58,3 +58,4 @@ The results can be seen in output_videos/directory.
 
 - Tutorial: [Football Analysis with Python, YOLO and OpenCV](https://www.youtube.com/watch?v=neBZ6huolkg) — by [Code In a Jiffy](https://www.youtube.com/@codeinajiffy). Thank you Jiffy!
 - Dataset used to train the yolov5mu model: [From Roboflow](https://universe.roboflow.com/roboflow-jvuqo/football-players-detection-3zvbc/dataset/1)
+- Thank you everyone in our Group (Group-A) for making this project successful!
