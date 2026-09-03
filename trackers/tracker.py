@@ -7,12 +7,23 @@ import pandas as pd
 import os
 import sys
 sys.path.append('../')
-from utils import get_center_of_bbox, get_bbox_width
+from utils import get_center_of_bbox, get_bbox_width, get_foot_position
 
 class Tracker:
     def __init__(self, model_path):
         self.model = YOLO(model_path)
         self.tracker = sv.ByteTrack()
+
+    def add_position_to_tracks(self, tracks):
+        for object, object_tracks in tracks.items():
+            for frame_num, track in enumerate(object_tracks):
+                for track_id, track_info in track.items():
+                    bbox = track_info['bbox']
+                    if object == 'ball':
+                        position = get_center_of_bbox(bbox)
+                    else:
+                        position = get_foot_position(bbox)
+                    tracks[object][frame_num][track_id]['position'] = position
 
     def interpolate_ball_position(self, ball_positions):
         ball_positions = [x.get(1, {}).get('bbox',[]) for x in ball_positions]
@@ -164,7 +175,7 @@ class Tracker:
     def draw_ball_control(self, frame, frame_num, team_ball_control):
         overlay = frame.copy()
 
-        rectangle = cv2.rectangle(overlay, (1200, 60), (1850, 140), (0,0,0), cv2.FILLED)
+        rectangle = cv2.rectangle(overlay, (1200, 15), (1850, 140), (0,0,0), cv2.FILLED)
         alpha = 0.8
         cv2.addWeighted(overlay, alpha, frame, 1 - alpha, 0, frame)
 
@@ -177,6 +188,7 @@ class Tracker:
         team_2 = team_2_ball_control / (team_1_ball_control + team_2_ball_control)
 
         # adding text to the rectangle box
+        cv2.putText(frame,"Ball Acquisition", (1375, 50),cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255),2)
         cv2.putText(frame, f"Team A: {team_1*100:.2f}%",
                     (1400, 95),
                     cv2.FONT_HERSHEY_COMPLEX,
