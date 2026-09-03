@@ -11,6 +11,8 @@ def main():
     tracks = tracker.get_object_tracks(cap_frames, read_from_stub=False,
                                         stub_path='./stubs/track_stubs.pkl')
 
+    tracks["ball"] = tracker.interpolate_ball_position(tracks["ball"])
+
     # Assigning player teams
     team_assigner = TeamAssigner()
     team_assigner.assign_team_color(cap_frames[0], tracks['players'][0])
