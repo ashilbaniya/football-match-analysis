@@ -10,7 +10,7 @@ import cv2
 
 def main():
     # Read the video
-    cap_frames = read("assets/match.mp4")
+    cap_frames = read("assets/match.mp4")        
 
     tracker = Tracker('models/best.pt')
     tracks = tracker.get_object_tracks(cap_frames, read_from_stub=True,
