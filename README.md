@@ -26,7 +26,21 @@ Python - For primary coding
 
 
 ## Demonstration
+**Before**
+https://github.com/user-attachments/assets/57d0ef8b-92f9-4b51-9649-181bad5002e0
+
+
+
+
+
+**After**
 https://github.com/user-attachments/assets/b6c19e9b-dede-4aca-a606-2a9e4840ee38
+
+
+
+
+
+
 
 
 
@@ -48,6 +62,5 @@ The results can be seen in output_videos/directory.
 
 ## Credits & References
 
-- Tutorial: [Football Analysis with Python, YOLO and OpenCV](https://www.youtube.com/watch?v=neBZ6huolkg) — by [Code In a Jiffy](https://www.youtube.com/@codeinajiffy)
-It was of great help in inspiring our project
-
+- Tutorial: [Football Analysis with Python, YOLO and OpenCV](https://www.youtube.com/watch?v=neBZ6huolkg) — by [Code In a Jiffy](https://www.youtube.com/@codeinajiffy). Thank you Jiffy!
+- Dataset used to train the yolov5mu model: [From Roboflow](https://universe.roboflow.com/roboflow-jvuqo/football-players-detection-3zvbc/dataset/1)
