@@ -26,14 +26,8 @@ Python - For primary coding
 
 
 ## Demonstration
-**Before**
-https://github.com/user-attachments/assets/57d0ef8b-92f9-4b51-9649-181bad5002e0
 
 
-
-
-
-**After**
 https://github.com/user-attachments/assets/b6c19e9b-dede-4aca-a606-2a9e4840ee38
 
 
