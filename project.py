@@ -1,5 +1,6 @@
 from utils import read, write
 from trackers import Tracker
+from team_assigner import TeamAssigner
 import cv2
 
 def main():
@@ -7,20 +8,22 @@ def main():
     cap_frames = read("assets/match.mp4")
 
     tracker = Tracker('models/best.pt')
-    tracks = tracker.get_object_tracks(cap_frames, read_from_stub=True,
+    tracks = tracker.get_object_tracks(cap_frames, read_from_stub=False,
                                         stub_path='./stubs/track_stubs.pkl')
 
-    # Cropping a player out of a frame
-    # for track_id, player in tracks["players"][0].items():
-    #     bbox = player['bbox']
-    #     frame = cap_frames[0]
+    # Assigning player teams
+    team_assigner = TeamAssigner()
+    team_assigner.assign_team_color(cap_frames[0], tracks['players'][0])
 
-    #     cropped_image = frame[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
+    for frame_num, player_track in enumerate(tracks['players']):
+        for player_id, track in player_track.items():
+            team = team_assigner.get_player_team(cap_frames[frame_num],
+                                                  track['bbox'],
+                                                    player_id
+                                                    )
 
-    #     # Saving the cropped image
-    #     cv2.imwrite(f'cropped_images/image_{track_id}.png', cropped_image)
-
-    #     break
+            tracks['players'][frame_num][player_id]['team'] = team
+            tracks['players'][frame_num][player_id]['team_color'] = team_assigner.team_color[team]
 
     output_video_frames = tracker.draw_annotations(cap_frames,tracks)
 

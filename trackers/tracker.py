@@ -22,7 +22,7 @@ class Tracker:
             
         return detections
 
-    def get_object_tracks(self, frames, read_from_stub=False, stub_path=None):
+    def get_object_tracks(self, frames, read_from_stub=True, stub_path=None):
 
         if read_from_stub and stub_path is not None and os.path.exists(stub_path):
             with open(stub_path, 'rb') as f:
@@ -157,15 +157,16 @@ class Tracker:
 
         # Draw players
             for track_id, player in player_dict.items():
-                frame = self.draw_ellipse(frame, player['bbox'],(0,255,0), track_id)
+                color = player.get("team_color", (0,255,0))
+                frame = self.draw_ellipse(frame, player['bbox'], color, track_id)
 
         # Draw referees
             for track_id, refere in referee_dict.items():
-                frame = self.draw_ellipse(frame, refere['bbox'],(0,0,255), track_id)
+                frame = self.draw_ellipse(frame, refere['bbox'],(255,0,255))
 
         # Draw the ball
             for track_id, ball in ball_dict.items():
-                frame = self.draw_triangle(frame, ball['bbox'],(255,0,0))
+                frame = self.draw_triangle(frame, ball['bbox'],(0,255,0))
 
             output_video_frames.append(frame)
 
