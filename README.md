@@ -26,8 +26,8 @@ Python - For primary coding
 
 
 ## Demonstration
+https://github.com/user-attachments/assets/b6c19e9b-dede-4aca-a606-2a9e4840ee38
 
-Insert gif or link to demo
 
 
 ## How to Run the Program
@@ -45,7 +45,9 @@ The program should be ran using the command: python project.py OR, python3 proje
 The AI model will then predict the players, their movements, and ball acquisition and save those results in an output file which was provided in the code.
 
 The results can be seen in output_videos/directory.
-## Credits
 
-https://www.youtube.com/watch?v=neBZ6huolkg by Code In A Jiffy was of great help in inspiring our project
+## Credits & References
+
+- Tutorial: [Football Analysis with Python, YOLO and OpenCV](https://www.youtube.com/watch?v=neBZ6huolkg) — by [Code In a Jiffy](https://www.youtube.com/@codeinajiffy)
+It was of great help in inspiring our project
 
