@@ -42,7 +42,7 @@ You also need to provide the file path to where you want to save the output as a
 
 >Here's an example:
 
-- Open up a VSCode editor or a terminal and go to the directory where the **project.py** file and its relevant modules are.
+- Open up a Code editor or a terminal and go to the directory where the **project.py** file and its relevant modules are.
 
 - Then in the command line, type 'python project.py -r **input_file_name** -w **output_file_name**'
 
