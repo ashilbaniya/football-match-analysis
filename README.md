@@ -40,17 +40,17 @@ Path of a football video should be given as input in the terminal as a command l
 
 You also need to provide the file path to where you want to save the output as a command line argument.
 
-Here's an example:
+>Here's an example:
 
-Open up a VSCode editor or a terminal and go to the directory where the **project.py** file and its relevant modules are.
+- Open up a VSCode editor or a terminal and go to the directory where the **project.py** file and its relevant modules are.
 
-Then in the command line, type 'python project.py -r **input_file_name** -w **output_file_name**'
+- Then in the command line, type 'python project.py -r **input_file_name** -w **output_file_name**'
 
-This will enable the program to take **input_file_name** as an input for detection and analysis.
+- This will enable the program to take **input_file_name** as an input for detection and analysis.
 
-The AI model will then predict the players, their movements, and ball acquisition and save the results in **output_file_name**.
+- The AI model will then predict the players, their movements, and ball acquisition and save the results in **output_file_name**.
 
-The results can be seen in output_videos/**output_file_name**.
+- The results can be seen in output_videos/**output_file_name**.
 
 
 ## Credits & References
