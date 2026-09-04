@@ -54,6 +54,7 @@ You also need to provide the file path to where you want to save the output as a
 
 - You can type 'python project.py -h' for more information.
 
+<img width="1662" height="758" alt="Image" src="https://github.com/user-attachments/assets/76207f7d-2884-439e-92de-f1e6094348a2" />
 
 ## Credits & References
 
