@@ -4,8 +4,6 @@
 This project is an assistive path for people who do not know much about football and are enthusiastic about learning it. It analyzes the different movements going around the pitch and interprets it so that the viewers can understand it properly without any confusion.
 
 
-
-
 ## Features
 
 - Player Detection and Tracking - Tracks unique players and where they are on the pitch
@@ -13,7 +11,6 @@ This project is an assistive path for people who do not know much about football
 - Referee Detection - Can differ referee from players
 - Team Detection - Can differ between teams
 - Player Speed and their Distance Covered - It estimates the player speed and calculates their whole distance covered throughout the clip
-
 
 
 ## Technologies Used
@@ -31,13 +28,6 @@ Python - For primary coding
 https://github.com/user-attachments/assets/b6c19e9b-dede-4aca-a606-2a9e4840ee38
 
 
-
-
-
-
-
-
-
 ## How to Run the Program
 
 Python must be installed in your program.
@@ -46,13 +36,22 @@ Third party modules (as in requirements.txt) should be installed in a Python Vir
 
 Code Editors such as Virtual Studio Code (or the terminal) must be used to run the code.
 
-Path of a football video should be given as input in the input section of the program to analyze the clip.
+Path of a football video should be given as input in the terminal as a command line argument.
 
-The program should be ran using the command: python project.py OR, python3 project.py (Depending on your system).
+You also need to provide the file path to where you want to save the output as a command line argument.
 
-The AI model will then predict the players, their movements, and ball acquisition and save those results in an output file which was provided in the code.
+Here's an example:
 
-The results can be seen in output_videos/directory.
+Open up a VSCode editor or a terminal and go to the directory where the **project.py** file and its relevant modules are.
+
+Then in the command line, type 'python project.py -r **input_file_name** -w **output_file_name**'
+
+This will enable the program to take **input_file_name** as an input for detection and analysis.
+
+The AI model will then predict the players, their movements, and ball acquisition and save the results in **output_file_name**.
+
+The results can be seen in output_videos/**output_file_name**.
+
 
 ## Credits & References
 
