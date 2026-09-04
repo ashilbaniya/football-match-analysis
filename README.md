@@ -52,6 +52,8 @@ You also need to provide the file path to where you want to save the output as a
 
 - The results can be seen in output_videos/**output_file_name**.
 
+- You can type 'python project.py -h' for more information.
+
 
 ## Credits & References
 
