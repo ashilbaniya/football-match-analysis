@@ -6,11 +6,12 @@ from camera_movement_estimator import CameraMovementEstimator
 from view_transformer import ViewTransformer
 from speed_and_distance_estimator import SpeedAndDistanceEstimator
 import numpy as np
-import cv2
+import argparse
+import textwrap
 
 def main():
     # Read the video
-    cap_frames = read("assets/match.mp4")        
+    cap_frames = read(f"assets/{args.read}")        
 
     tracker = Tracker('models/best.pt')
     tracks = tracker.get_object_tracks(cap_frames, read_from_stub=True,
@@ -23,8 +24,8 @@ def main():
     # camera movement estimator
     camera_movement_estimator = CameraMovementEstimator(cap_frames[0])
     camera_movement_per_frame = camera_movement_estimator.get_camera_movement(cap_frames,
-                                                                            read_from_stub=True,
-                                                                            stub_path='./stubs/camera_movement_stub.pkl')
+                                                                           read_from_stub=True,
+                                                                           stub_path='./stubs/camera_movement_stub.pkl')
 
     camera_movement_estimator.add_adjust_positions_to_tracks(tracks, camera_movement_per_frame)
 
@@ -77,9 +78,23 @@ def main():
     output_video_frames = speed_and_distance_estimator.draw_speed_and_distance(output_video_frames, tracks)
 
     # Save the video
-    write(output_video_frames, 'output_videos/out.avi')
+    write(output_video_frames, f'output_videos/{args.write}')
     print("Program execucted successfully.")
-    print("Output saved to 'output_videos/out.avi.")
+    print(f"Output saved to 'output_videos/{args.write}.")
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+                    prog='Football Analysis Tool',
+                    description="This is a football analysis tool made using YOLO and opencv",
+                    formatter_class=argparse.RawDescriptionHelpFormatter,
+                    epilog=textwrap.dedent('''Example: 
+python project.py -r input.mp4 -w output.mp4        # read from input.mp4 and then write the results in output.mp4
+Check out "https://github.com/ashilbaniya/football-match-analysis" for more information.
+'''
+                    ))
+    parser.add_argument("-r", "--read", required=True, help="read from the given video path")
+    parser.add_argument("-w", "--write", required=True, help="write the results to the given path.")
+
+    args = parser.parse_args()
+
     main()
